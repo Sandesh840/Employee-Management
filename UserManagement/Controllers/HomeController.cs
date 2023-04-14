@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using UserManagement.Data;
 using UserManagement.Models;
@@ -42,11 +43,18 @@ namespace UserManagement.Controllers
             User user= _applicationDbContext.User.Find(id);
             return View(user);
         }
-        [HttpPost]
+
         public IActionResult UpdateUserById(User user)
         {
+             //get user by id
+           _applicationDbContext.User.Update(user);
+            _applicationDbContext.SaveChanges();
+            return RedirectToAction("GetUser");
+        }
+        public IActionResult DeleteUserById(User user)
+        {
             //get user by id
-            _applicationDbContext.User.Update(user);
+            _applicationDbContext.User.Remove(user);
             _applicationDbContext.SaveChanges();
             return RedirectToAction("GetUser");
         }
@@ -59,6 +67,10 @@ namespace UserManagement.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Detail()
+        {
+            return View();
         }
     }
 }

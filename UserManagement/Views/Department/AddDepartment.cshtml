@@ -1,0 +1,35 @@
+﻿@model UserManagement.Models.Department
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Department Management</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Department" asp-action="SaveDepartment">
+                        <div class="form-group">
+                            <label >Department Name:</label>
+                            <input type="text" class="form-control"  asp-for="DepartmentName">
+                        </div>
+                        <div class="form-group">
+                            <label >Department Manager:</label>
+                            <input type="text" class="form-control"  asp-for="Manager">
+                        </div>
+                        <div class="form-group">
+                            <label >Member Number:</label>
+                            <input type="number" class="form-control" asp-for="MemberNumber">
+                        </div>
+                        <div class="form-group">
+                            <label >Discription:</label>
+                            <input type="text" class="form-control"  asp-for="Discription">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Add Department</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

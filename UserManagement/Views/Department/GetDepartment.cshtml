@@ -1,0 +1,27 @@
+﻿@model List<UserManagement.Models.Department>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">SN</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Manager</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (UserManagement.Models.Department dep in Model)
+        {
+            <tr>
+                <td >@dep.Id</td>
+                <td>@dep.DepartmentName</td>
+                <td>@dep.MemberNumber</td>
+                <td>@dep.Manager</td>
+                <td>@dep.Discription</td>
+                <td><a href="GetDepartmentById/@dep.Id">View</a></td>
+                @*<td><a href="DeleteUserById/@item.id">Delete</a></td>*@
+            </tr>
+        }
+    </tbody>
+</table>

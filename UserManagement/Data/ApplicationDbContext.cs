@@ -9,5 +9,6 @@ namespace UserManagement.Data
         {
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Department> Department { get; set; }
     }
 }
