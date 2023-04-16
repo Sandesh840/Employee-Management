@@ -4,12 +4,10 @@
     <thead>
         <tr>
             <th scope="col">User ID</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Address</th>
+            <th scope="col">User Name</th>          
             <th scope="col">Phone Number</th>
             <th scope="col">Email</th>
-            <th scope="col">salary</th>
-            <th scope="col">DOB</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -17,12 +15,9 @@
             {
             <tr>        
                 <td>@item.id</td>
-                <td>@item.name</td>
-                <td>@item.address</td>
+                <td>@item.name</td>              
                 <td>@item.phNumber</td>
-                <td>@item.email</td>
-                <td>@item.salary</td>
-                <td>@item.dob</td>
+                <td>@item.email</td>               
                 <td><a href="GetUserById/@item.id">View</a></td>
                 <td><a href="DeleteUserById/@item.id">Delete</a></td>
             </tr>

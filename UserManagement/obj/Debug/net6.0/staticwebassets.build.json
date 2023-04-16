@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MDtMYoo0d0Ct3oBAfAf7Lcvy0deWsjMC89/tE456nbM=",
+  "Hash": "G0lRSN4/Mz/ZrGbBN9nzhTXpLymoQScu3/SdTMRoJmk=",
   "Source": "UserManagement",
   "BasePath": "_content/UserManagement",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\HP\\source\\repos\\course\\UserManagement\\UserManagement\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\UserManagement.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\course\\UserManagement\\UserManagement\\wwwroot\\css\\Detail.css",
+      "SourceId": "UserManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\course\\UserManagement\\UserManagement\\wwwroot\\",
+      "BasePath": "_content/UserManagement",
+      "RelativePath": "css/Detail.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Detail.css"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\course\\UserManagement\\UserManagement\\wwwroot\\css\\site.css",

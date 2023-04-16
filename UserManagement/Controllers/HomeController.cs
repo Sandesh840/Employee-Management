@@ -24,6 +24,7 @@ namespace UserManagement.Controllers
         [HttpGet]
         public IActionResult AddUser()
         {
+            ViewBag.DepList=_applicationDbContext.Department.ToList();
             return View();
         }
         public IActionResult AddUser(User user)
@@ -34,13 +35,13 @@ namespace UserManagement.Controllers
         }
         public IActionResult GetUser()
         {
-            List<User> user = _applicationDbContext.User.ToList();
+            List<User> user = _applicationDbContext.User.Include(x => x.Department).ToList();
             return View(user);
         }
         public IActionResult GetUserById(int id)
         {
             //get user by id
-            User user= _applicationDbContext.User.Find(id);
+            User user = _applicationDbContext.User.Include(x => x.Department).FirstOrDefault(use => use.id == id); //first id is refrenced from user calss and second id is refrenced from this method id
             return View(user);
         }
 

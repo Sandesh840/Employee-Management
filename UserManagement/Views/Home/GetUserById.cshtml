@@ -1,50 +1,17 @@
 ﻿@model UserManagement.Models.User
-
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="mb-0">User Management</h4>
-                </div>
-                <div class="card-body">
-
-                    <form asp-controller="Home"  asp-action="UpdateUserById">
-                        <div class="form-group">
-                            <label>Id:</label>
-                            <input type="number" readonly class="form-control"  asp-for="id">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" asp-for="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" asp-for="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="number">Ph Number:</label>
-                            <input type="number" class="form-control" asp-for="phNumber">
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Address:</label>
-                            <input type="text" class="form-control" id="address" name="address" asp-for="address">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dob">DOB:</label>
-                            <input type="date" class="form-control" id="dob" name="dob" asp-for="dob">
-                        </div>
-                        <div class="form-group">
-                            <label for="salary">Salary:</label>
-                            <input type="number" class="form-control" id="salary" name="salary" asp-for="salary">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Update</button>
-                        <button asp-action="DeleteUserById" asp-controller="Home">Delete here</button>
-                    </form>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- User profile picture -->
+            <img src="https://via.placeholder.com/150" alt="User Profile Picture" class="img-thumbnail">
+        </div>
+        <div class="col-md-9">
+            <!-- User profile details -->
+            <h1>User Name</h1>
+            <p><strong>Email:</strong> <input type="text" class="form-control" asp-for="name"></p>
+            <p><strong>Location:</strong> City, Country</p>
+            <p><strong>Joined:</strong> January 1, 2022</p>
+            <p><strong>Last Active:</strong> April 14, 2023</p>
         </div>
     </div>
 </div>

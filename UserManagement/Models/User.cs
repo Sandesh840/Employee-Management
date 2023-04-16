@@ -9,6 +9,9 @@
         public double salary { get; set; }
         public string email { get; set; }
         public DateTime dob { get; set; }
+        //Many to one
+        public int DepartmentID { get; set; }
+        public Department Department { get; set; }
 
     }
 }
