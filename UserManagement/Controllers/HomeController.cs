@@ -37,7 +37,7 @@ namespace UserManagement.Controllers
         {
             List<User> user = _applicationDbContext.User.Include(x => x.Department).ToList();
             return View(user);
-        }
+        }  
         public IActionResult GetUserById(int id)
         {
             ViewBag.DepList = _applicationDbContext.Department.ToList();

@@ -23,13 +23,36 @@
                             <input type="number" class="form-control" asp-for="MemberNumber">
                         </div>
                         <div class="form-group">
-                            <label for="number">Ph Number:</label>
+                            <label for="number">Manager Name:</label>
                             <input type="text" class="form-control" asp-for="Manager">
                         </div>
                         <div class="form-group">
-                            <label for="address">Address:</label>
+                            <label for="address">Discription:</label>
                             <input type="text" class="form-control"  asp-for="Discription">
                         </div>
+                        <div class="form-group">
+                            <label for="address">USER list:</label>
+                            @if (Model.Users != null)
+                            {
+                                <table class="table" asp-for="Users">
+                                    @foreach (var item in Model.Users)
+                                    {
+                                        <tr>
+                                            <td value="@item.id">@item.name </td>
+                                        </tr>
+                                    }
+                                </table>
+                            }
+                            @* <select class="form-control" asp-for="Users">
+                                @foreach (var item in ViewBag.UserList)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+
+
+                            </select>*@
+                        </div>
+
 
                         
                         <button type="submit" class="btn btn-primary btn-block">Update</button>

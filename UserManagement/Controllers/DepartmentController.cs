@@ -37,7 +37,8 @@ namespace UserManagement.Controllers
         }
         public IActionResult GetDepartmentById(int id)
         {
-            Department department = _appDbContext.Department.Find(id);
+            // ViewBag.UserList = _appDbContext.User.ToList();
+            Department department = _appDbContext.Department.Include(x => x.Users).FirstOrDefault(use => use.Id == id);
             return View(department);
         }
         public IActionResult UpdateDepartmentById(Department department)

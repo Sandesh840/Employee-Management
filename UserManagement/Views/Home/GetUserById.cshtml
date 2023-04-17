@@ -33,10 +33,15 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Department:</label>
-                            @foreach (var item in ViewBag.DepList)
-                            {
-                                <option value="@item.Id">@item.DepartmentName</option>
-                            }
+                           
+                            <select class="form-control" asp-for="DepartmentID">
+                                @foreach (var item in ViewBag.DepList)
+                                {
+                                    <option value="@item.Id">@item.DepartmentName</option>
+                                }
+
+
+                            </select>
                         </div>
 
                         <div class="form-group">
