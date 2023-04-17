@@ -1,10 +1,14 @@
 ﻿@model List<UserManagement.Models.User>
-
+@{
+    int i = 0;
+}
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">User ID</th>
-            <th scope="col">User Name</th>          
+            <th scope="col">SN</th>
+                        <th scope="col">User Name</th>  
+            <th scope="col">Department Name</th>  
+            
             <th scope="col">Phone Number</th>
             <th scope="col">Email</th>
             
@@ -13,9 +17,12 @@
     <tbody>
             @foreach(UserManagement.Models.User item in Model)
             {
-            <tr>        
-                <td>@item.id</td>
-                <td>@item.name</td>              
+                i++;
+            <tr> 
+                <td>@i</td>
+                
+                <td>@item.name</td>
+                <td>@item.Department.DepartmentName</td>
                 <td>@item.phNumber</td>
                 <td>@item.email</td>               
                 <td><a href="GetUserById/@item.id">View</a></td>
