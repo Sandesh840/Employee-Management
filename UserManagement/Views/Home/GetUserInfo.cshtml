@@ -1,0 +1,79 @@
+﻿<h1>INNER JOIN</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>User Address</th>
+            <th>Department Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.UserInfo)
+        {
+            <tr>
+                <td>@item.User_Name</td>
+                <td>@item.User_Address</td>
+                <td>@item.Department_Name</td>
+                <td>@item.Salary</td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+
+<br />
+<br />
+<br />
+<br />
+<h1>left JOIN</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>User Address</th>
+            <th>Department Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.userInfoTem)
+        {
+            <tr>
+                <td>@item.User_Name</td>
+                <td>@item.User_Address</td>
+                <td>@item.Department_Name</td>
+                <td>@item.Salary</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<br />
+<br />
+<br />
+<br />
+@*<h1>RIGHT JOIN</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>User Address</th>
+            <th>Department Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.userInfoTems)
+        {
+            <tr>
+                <td>@item.User_Name</td>
+                <td>@item.User_Address</td>
+                <td>@item.Department_Name</td>
+                <td>@item.Salary</td>
+            </tr>
+
+        }
+    </tbody>
+*@</table>
