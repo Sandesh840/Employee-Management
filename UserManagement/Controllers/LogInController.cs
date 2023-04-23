@@ -44,5 +44,28 @@ namespace UserManagement.Controllers
             }
             return RedirectToAction("RegisterUser");
         }
+        public IActionResult LogInUser()
+        {
+
+            return View();
+        }
+        public async Task<IActionResult> LogInUsers(LoginViewModel logInViewModel)
+        {
+           
+            var identityResult = await _signInManager.PasswordSignInAsync(logInViewModel.Email, logInViewModel.Password, false, false);
+            if (identityResult.Succeeded)
+            {
+               
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("LogInUser");
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("LogInUser");
+        }
+    
     }
 }
