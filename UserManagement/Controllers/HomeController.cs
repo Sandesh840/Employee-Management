@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using UserManagement.Data;
@@ -7,6 +8,7 @@ using UserManagement.Models;
 
 namespace UserManagement.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -116,7 +118,6 @@ namespace UserManagement.Controllers
                               from useDet in useDep.DefaultIfEmpty()
                               select new UserInfoDTO(useDet.name, useDet.address, dep.DepartmentName, useDet.salary);
             ViewBag.userInfoTems = userInfoTems;
-
             return View();
 
         }

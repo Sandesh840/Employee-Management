@@ -13,6 +13,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 
 var app = builder.Build();
 
+//redirect to login page if not loged in
+// builder.Services.ConfigureApplicationCookie(configure => configure.LoginPath = "/Login/LoginUser");
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

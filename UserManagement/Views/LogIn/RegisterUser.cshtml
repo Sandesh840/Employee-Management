@@ -23,6 +23,19 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="address">Select Role:</label>
+                                        <select required class="form-control" asp-for="RoleName">
+                                            <option></option>
+                                            @foreach (var item in ViewBag.RoleList)
+                                            {
+                                                <option value="@item.Name">@item.Name</option>
+                                            }
+
+
+                                        </select>
+                                    </div>
+
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">

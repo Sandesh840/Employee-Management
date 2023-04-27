@@ -2,9 +2,11 @@
 using UserManagement.Data;
 using UserManagement.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UserManagement.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         private readonly ApplicationDbContext _appDbContext;
