@@ -39,10 +39,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRVc2VyQnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/Home/GetUserByIdDetail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRVc2VyQnlJZERldGFpbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/Home/GetUserInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRVc2VySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,10 +49,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/Image/AddImage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VcQWRkSW1hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/LogIn/AddRole.cshtml]
@@ -77,6 +69,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/shift/AddShift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hpZnRcQWRkU2hpZnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/_ViewImports.cshtml]

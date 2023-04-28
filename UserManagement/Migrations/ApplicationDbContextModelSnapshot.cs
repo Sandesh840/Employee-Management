@@ -232,41 +232,13 @@ namespace UserManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Manager")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MemberNumber")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Department");
-                });
-
-            modelBuilder.Entity("UserManagement.Models.Images", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImgName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("UserManagement.Models.User", b =>
@@ -280,12 +252,9 @@ namespace UserManagement.Migrations
                     b.Property<int>("DepartmentID")
                         .HasColumnType("int");
 
-                    b.Property<string>("address")
+                    b.Property<string>("IdentityUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dob")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("email")
                         .IsRequired()
@@ -295,9 +264,6 @@ namespace UserManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("phNumber")
-                        .HasColumnType("float");
-
                     b.Property<double>("salary")
                         .HasColumnType("float");
 
@@ -305,7 +271,39 @@ namespace UserManagement.Migrations
 
                     b.HasIndex("DepartmentID");
 
+                    b.HasIndex("IdentityUserId");
+
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("UserManagement.Models.UserShift", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CheckIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOut")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TotalTime")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Userid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Userid");
+
+                    b.ToTable("UserShift");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -367,7 +365,26 @@ namespace UserManagement.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Department");
+
+                    b.Navigation("IdentityUser");
+                });
+
+            modelBuilder.Entity("UserManagement.Models.UserShift", b =>
+                {
+                    b.HasOne("UserManagement.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Userid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UserManagement.Models.Department", b =>

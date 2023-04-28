@@ -11,6 +11,6 @@ namespace UserManagement.Data
         }
         public DbSet<User> User { get; set; }
         public DbSet<Department> Department { get; set; }
-        public DbSet<Images> Images { get; set; }
+        public DbSet<UserShift> UserShift { get; set; }
     }
 }

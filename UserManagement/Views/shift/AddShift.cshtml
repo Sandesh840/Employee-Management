@@ -1,0 +1,55 @@
+﻿@model UserManagement.Models.UserShift
+
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                         alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+                        <form class="px-md-2" asp-controller="Shift" asp-action="AddUserShift">
+                            <div class="form-outline mb-4">
+                                <select required class="form-control" asp-for="UserId">
+                                    <option></option>
+                                    @foreach (var item in ViewBag.UserList)
+                                    {
+                                        <option value="@item.id">@item.name</option>
+                                    }
+                                </select>
+                                <label class="form-label" for="form3Example1q">Name</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline datepicker">
+                                        <input type="time" class="form-control" asp-for="CheckIn" />
+                                        <label for="exampleDatepicker1" class="form-label">Check In Time</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline datepicker">
+                                        <input type="time" class="form-control" asp-for="CheckOut" />
+                                        <label for="exampleDatepicker1" class="form-label">Check Out Time</label>
+                                    </div>                                  
+                                </div>
+                            </div>
+                            <div class="mb-4">
+
+                                <div class="form-outline datepicker">
+                                    <input type="number" class="form-control" asp-for="TotalTime" />
+                                    <label for="exampleDatepicker1" class="form-label">Total Time</label>
+                                </div>
+                            </div>                          
+                            <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

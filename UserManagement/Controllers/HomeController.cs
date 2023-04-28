@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -13,11 +13,15 @@ namespace UserManagement.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _applicationDbContext;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext applicationDbContext)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext applicationDbContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             _applicationDbContext = applicationDbContext;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
@@ -28,17 +32,33 @@ namespace UserManagement.Controllers
         public IActionResult AddUser()
         {
             ViewBag.DepList=_applicationDbContext.Department.ToList();
+            ViewBag.UserList = _applicationDbContext.Users.ToList();
             return View();
         }
-        public IActionResult AddUser(User user)
+        public async Task <IActionResult> AddUser(User user)
         {
-            _applicationDbContext.User.Add(user);
-            _applicationDbContext.SaveChanges();
+            await _applicationDbContext.User.AddAsync(user);
+            await _applicationDbContext.SaveChangesAsync();
             return RedirectToAction("AddUser");
         }
-        public IActionResult GetUser()
+        public async Task <IActionResult> GetUser()
         {
-            List<User> user = _applicationDbContext.User.Include(x => x.Department).ToList();
+            var logedInUser=await _userManager.GetUserAsync(User);
+            var userRole = await _userManager.GetRolesAsync(logedInUser);
+            List<User> user = new List<User>();
+            if(userRole != null)
+            {
+                if (userRole.FirstOrDefault() == "Staff")
+                {
+                    user = await _applicationDbContext.User.Where(x => x.IdentityUserId == logedInUser.Id).Include(x => x.Department).ToListAsync();
+                }
+                else if(userRole.FirstOrDefault() == "Admin")
+                {
+                    user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
+                    // user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
+                }
+            }
+           // List<User> user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
             return View(user);
         }  
         public IActionResult GetUserById(int id)
@@ -88,7 +108,7 @@ namespace UserManagement.Controllers
                            select new
                            {
                                UserName = use.name,
-                               UserAddress=use.address,
+                               
                                DepartName=dep.DepartmentName,
                                Salary=use.salary,
                                
@@ -98,7 +118,7 @@ namespace UserManagement.Controllers
             var userInfo = from use in _applicationDbContext.User
                            join dep in _applicationDbContext.Department on
                            use.DepartmentID equals dep.Id
-                           select new UserInfoDTO(use.name, use.address, dep.DepartmentName, use.salary);
+                           select new UserInfoDTO(use.name, dep.DepartmentName, use.salary);
             ViewBag.UserInfo = userInfo;
 
             /////////////////
@@ -107,7 +127,7 @@ namespace UserManagement.Controllers
                            join dep in _applicationDbContext.Department on
                            use.name equals dep.DepartmentName into useDep
                            from useDet in useDep.DefaultIfEmpty()
-                           select new UserInfoDTO(use.name, use.address, useDet.DepartmentName, use.salary);
+                           select new UserInfoDTO(use.name, useDet.DepartmentName, use.salary);
             ViewBag.userInfoTem = userInfoTem;
 
             /////////////////
@@ -116,7 +136,7 @@ namespace UserManagement.Controllers
                               join use in _applicationDbContext.User on
                               dep.DepartmentName equals use.name into useDep
                               from useDet in useDep.DefaultIfEmpty()
-                              select new UserInfoDTO(useDet.name, useDet.address, dep.DepartmentName, useDet.salary);
+                              select new UserInfoDTO(useDet.name,  dep.DepartmentName, useDet.salary);
             ViewBag.userInfoTems = userInfoTems;
             return View();
 

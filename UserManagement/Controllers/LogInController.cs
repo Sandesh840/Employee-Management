@@ -41,15 +41,32 @@ namespace UserManagement.Controllers
                 UserName = registerViewModel.Email,
                 Email = registerViewModel.Email
             };
-            var result1 = await _userManager.CreateAsync(user, registerViewModel.Password);
-            //adding roles
-            var result = await _userManager.CreateAsync(user, registerViewModel.RoleName);
-            if (result.Succeeded && result1.Succeeded)
+            var userCreateResult = await _userManager.CreateAsync(user, registerViewModel.Password);
+            if (userCreateResult.Succeeded)
             {
-                await _signInManager.SignInAsync(user, false);
-                // await _userManager.AddToRoleAsync(user, "admin");
-                return RedirectToAction("Index", "Home");
+                var result = await _userManager.AddToRoleAsync(user, registerViewModel.RoleName);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("Index", "Home");
+                }
             }
+            else
+            {
+                //handle error and display on register page
+                foreach(var item in userCreateResult.Errors)
+                {
+                    //pass error on model to catch on view asp-validation-summary
+                    ModelState.AddModelError(string.Empty, "Error"+item.Description);
+                    //get role detail
+                    ViewBag.RoleList = _appDbContext.Roles.ToList();
+                    //return to same view
+                    return View("RegisterUser", registerViewModel);
+                }
+                
+            }
+            //adding roles
+            
             return RedirectToAction("RegisterUser");
         }
         public IActionResult LogInUser()

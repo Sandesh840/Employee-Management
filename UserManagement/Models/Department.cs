@@ -4,9 +4,7 @@
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
-        public int MemberNumber { get; set; }
-        public string Manager { get; set; }
-        public string Discription { get; set; }
+        public string Manager { get; set; }       
         //one to many
         public List<User> Users { get; set; }
     }

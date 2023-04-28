@@ -18,18 +18,12 @@
                             <label for="name">Department Name:</label>
                             <input type="text" class="form-control"  asp-for="DepartmentName">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Member number:</label>
-                            <input type="number" class="form-control" asp-for="MemberNumber">
-                        </div>
+                        
                         <div class="form-group">
                             <label for="number">Manager Name:</label>
                             <input type="text" class="form-control" asp-for="Manager">
                         </div>
-                        <div class="form-group">
-                            <label for="address">Discription:</label>
-                            <input type="text" class="form-control"  asp-for="Discription">
-                        </div>
+                        
                         <div class="form-group">
                             <label for="address">USER list:</label>
                             @if (Model.Users != null)

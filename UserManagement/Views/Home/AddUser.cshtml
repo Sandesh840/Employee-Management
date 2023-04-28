@@ -8,7 +8,7 @@
                     <h4 class="mb-0">User Management</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action"AddUser">
+                    <form method="post" asp-controller="Shift" asp-action="AddUser">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" asp-for="name">
@@ -16,15 +16,7 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" asp-for="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="number">Ph Number:</label>
-                            <input type="number" class="form-control"  asp-for="phNumber">
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Address:</label>
-                            <input type="text" class="form-control" id="address" name="address" asp-for="address">
-                        </div>
+                        </div>                                            
                         <div class="form-group">
                             <label for="address">Department :</label>
                             <select required class="form-control" asp-for="DepartmentID">
@@ -32,19 +24,24 @@
                                 @foreach (var item in ViewBag.DepList)
                                 {
                                     <option value="@item.Id">@item.DepartmentName</option>
-                                }
-                                
-                               
+                                }                                                              
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dob">DOB:</label>
-                            <input type="date" class="form-control" id="dob" name="dob" asp-for="dob">
-                        </div>
+                        </div>             
                         <div class="form-group">
                             <label for="salary">Salary:</label>
                             <input type="number" class="form-control" id="salary" name="salary" asp-for="salary">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Select User:</label>
+                            <select required class="form-control" asp-for="IdentityUserId">
+                                <option></option>
+                                @foreach (var item in ViewBag.UserList)
+                                {
+                                    <option value="@item.Id">@item.Email</option>
+                                }
+
+
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                     </form>
