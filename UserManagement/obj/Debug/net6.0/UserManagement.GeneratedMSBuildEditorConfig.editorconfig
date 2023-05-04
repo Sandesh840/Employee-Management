@@ -75,6 +75,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hpZnRcQWRkU2hpZnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/shift/GetShift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hpZnRcR2V0U2hpZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/shift/GetShiftyId.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hpZnRcR2V0U2hpZnR5SWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/source/repos/course/UserManagement/UserManagement/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

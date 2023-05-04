@@ -26,6 +26,7 @@ namespace UserManagement.Controllers
 
         public IActionResult Index()
         {
+            var userDepartment = _applicationDbContext.UserDepartment.ToList();
             return View();
         }
         [HttpGet]
@@ -55,10 +56,9 @@ namespace UserManagement.Controllers
                 else if(userRole.FirstOrDefault() == "Admin")
                 {
                     user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
-                    // user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
+                   
                 }
             }
-           // List<User> user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
             return View(user);
         }  
         public IActionResult GetUserById(int id)

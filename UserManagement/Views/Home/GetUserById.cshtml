@@ -1,6 +1,4 @@
 ﻿@model UserManagement.Models.User
-
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -9,7 +7,6 @@
                     <h4 class="mb-0">User Management</h4>
                 </div>
                 <div class="card-body">
-
                     <form asp-controller="Home"  asp-action="UpdateUserById">
                         <div class="form-group">
                             <label>Id:</label>
@@ -22,8 +19,7 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" asp-for="email">
-                        </div>
-                        
+                        </div>                       
                         <div class="form-group">
                             <label for="address">Department:</label>
                            
@@ -32,12 +28,8 @@
                                 {
                                     <option value="@item.Id">@item.DepartmentName</option>
                                 }
-
-
                             </select>
-                        </div>
-
-                       
+                        </div>                      
                         <div class="form-group">
                             <label for="salary">Salary:</label>
                             <input type="number" class="form-control" id="salary" name="salary" asp-for="salary">

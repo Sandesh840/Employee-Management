@@ -1,0 +1,79 @@
+﻿@model UserManagement.Models.UserShift
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">User Management</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Shift" asp-action="UpdateShiftById">
+                        @*<div class="form-group">
+                            <label>Id:</label>
+                            <input type="number" readonly class="form-control" asp-for="Id">
+                        </div>*@
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" asp-for="UserId">
+                        </div>
+                        <div class="form-group">
+                            <label >check In time</label>
+                            <input type="time" class="form-control" id="start_time" asp-for="CheckIn">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label >check Out time</label>
+                            <input type="time" class="form-control" id="end_time" asp-for="CheckOut">
+                        </div>
+                        <div class="form-group">
+                            <label >total time</label>
+                            <input type="number" readonly class="form-control" id="total_time" asp-for="TotalTime">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        <button asp-action="DeleteShiftById" asp-controller="Shift">Delete here</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var startTime = document.getElementById("start_time");
+    var endTime = document.getElementById("end_time");
+    var totalTime = document.getElementById("total_time");
+
+    //add event fot the change of start time and end time
+    //every time when start time and end time get change it triggered the event which calls the onTimeUpdate function
+    startTime.addEventListener('input', onTimeUpdate);
+    endTime.addEventListener('input', onTimeUpdate);
+
+    function onTimeUpdate() {
+        debugger;
+        //get value from start time
+        var startTimeValue = startTime.value;
+        var endTimeValue = endTime.value;
+        if (startTimeValue && endTimeValue) {
+            //splits the value according to : and index according to 0,1
+            var startTimeSplit = startTimeValue.split(":");
+            var endTimeSplit = endTimeValue.split(":");
+
+            //converting hrs into min
+            var startTimeMin = parseInt(startTimeSplit[0]) * 60 + parseInt(startTimeSplit[1]);
+            var endTimeMin = parseInt(endTimeSplit[0]) * 60 + parseInt(endTimeSplit[1]);
+
+            //getting minute difference
+            var minDifference = endTimeMin - startTimeMin;
+
+            var roundFig = minDifference/60;
+            //converting min to difference hrs
+            totalTime.value = roundFig.toFixed(2);
+        }
+        else {
+            totalTime.value = '--';
+        }
+    }
+</script>

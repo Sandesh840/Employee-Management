@@ -1,5 +1,5 @@
 ﻿@model UserManagement.Models.UserShift
-
+<div>
 <section class="h-100 h-custom" style="background-color: #8fc4b7;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -25,22 +25,22 @@
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline datepicker">
-                                        <input type="time" class="form-control" asp-for="CheckIn" />
-                                        <label for="exampleDatepicker1" class="form-label">Check In Time</label>
+                                        <input type="time" id="start_time" class="form-control" asp-for="CheckIn" />
+                                        <label  class="form-label">Check In Time</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline datepicker">
-                                        <input type="time" class="form-control" asp-for="CheckOut" />
-                                        <label for="exampleDatepicker1" class="form-label">Check Out Time</label>
+                                        <input type="time" id="end_time" class="form-control" asp-for="CheckOut" />
+                                        <label  class="form-label">Check Out Time</label>
                                     </div>                                  
                                 </div>
                             </div>
                             <div class="mb-4">
 
                                 <div class="form-outline datepicker">
-                                    <input type="number" class="form-control" asp-for="TotalTime" />
-                                    <label for="exampleDatepicker1" class="form-label">Total Time</label>
+                                    <input type="number" readonly id="total_time" class="form-control" asp-for="TotalTime" />
+                                    <label  class="form-label">Total Time</label>
                                 </div>
                             </div>                          
                             <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
@@ -53,3 +53,40 @@
         </div>
     </div>
 </section>
+</div>
+<script>
+    var startTime= document.getElementById("start_time");
+    var endTime= document.getElementById("end_time");
+    var totalTime= document.getElementById("total_time");
+    
+    //add event fot the change of start time and end time
+    //every time when start time and end time get change it triggered the event which calls the onTimeUpdate function
+    startTime.addEventListener('input',onTimeUpdate);
+    endTime.addEventListener('input',onTimeUpdate);
+
+    function onTimeUpdate(){
+        debugger;
+        //get value from start time 
+        var startTimeValue = startTime.value;
+        var endTimeValue = endTime.value;
+        if(startTimeValue && endTimeValue){
+            //splits the value according to : and index according to 0,1
+            var startTimeSplit = startTimeValue.split(":");
+            var endTimeSplit = endTimeValue.split(":");
+
+            //converting hrs into min
+            var startTimeMin = parseInt(startTimeSplit[0]) * 60 + parseInt(startTimeSplit[1]);
+            var endTimeMin = parseInt(endTimeSplit[0]) * 60 + parseInt(endTimeSplit[1]);
+
+            //getting minute difference
+            var minDifference=endTimeMin-startTimeMin;
+
+            var roundFig = minDifference / 60;
+            //converting min to difference hrs
+            totalTime.value = roundFig.toFixed(2);
+        }
+        else{
+            totalTime.value='--';
+        }
+    }
+</script>
