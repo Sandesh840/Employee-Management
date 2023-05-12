@@ -9,16 +9,22 @@
                 </div>
                 <div class="card-body">
                     <form asp-controller="Shift" asp-action="UpdateShiftById">
-                        @*<div class="form-group">
+                        <div class="form-group">
                             <label>Id:</label>
                             <input type="number" readonly class="form-control" asp-for="Id">
-                        </div>*@
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" asp-for="UserId">
                         </div>
                         <div class="form-group">
-                            <label >check In time</label>
+                            <label for="name">Name:</label>
+                            <select required class="form-control" asp-for="UserId">
+                                <option></option>
+                                @foreach (var item in ViewBag.UserList)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>check In time</label>
                             <input type="time" class="form-control" id="start_time" asp-for="CheckIn">
                         </div>
                         

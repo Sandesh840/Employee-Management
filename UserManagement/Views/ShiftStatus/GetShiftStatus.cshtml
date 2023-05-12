@@ -1,0 +1,43 @@
+﻿
+@{
+    int i = 0;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">SN</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Check In Time</th>
+            <th scope="col">Check Out Time</th>
+            <th scope="col">Attendance Date</th>
+            <th scope="col">Actual Shift</th>
+            <th scope="col">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.UserShiftStatus != null)
+        {
+            @foreach (var item in ViewBag.UserShiftStatus)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@item.UserName</td>
+                    <td>@item.CheckInTime1</td>
+                    <td>@item.CheckOutTime1</td>
+                    <td>@item.AttendanceDate</td>
+                    <td>@item.Shift</td>
+                    <td>@item.Status</td>
+                    
+                    @*<td><a href="GetShiftyId/@item.Id">View</a></td>
+            <td><a href="DeleteShiftById/@item.Id">Delete</a></td>*@
+                </tr>
+
+            }
+
+        }
+           
+        
+    </tbody>
+</table>

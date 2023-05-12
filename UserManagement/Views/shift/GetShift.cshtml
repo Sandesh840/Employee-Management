@@ -19,15 +19,7 @@
             i++;
             <tr>
                 <td>@i</td>
-                <td>@item.UserId</td>
-
-                @*@foreach (var stuff in ViewBag.NameList)
-                    {
-                    <td value="@item.Id">
-                       @stuff.name
-                    </td>
-                    }*@
-                    
+                <td>@item.User.name</td>                   
                 <td>@item.TotalTime</td>
                 <td><a href="GetShiftyId/@item.Id">View</a></td>
                 <td><a href="DeleteShiftById/@item.Id">Delete</a></td>

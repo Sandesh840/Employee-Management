@@ -13,5 +13,6 @@ namespace UserManagement.Models
         public Department Department { get; set; }
         public IdentityUser IdentityUser { get; set; }
         public string IdentityUserId { get; set; }
+        public List<UserShiftLog> ShiftLog { get; set; }
     }
 }

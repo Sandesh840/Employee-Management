@@ -276,6 +276,19 @@ namespace UserManagement.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("UserManagement.Models.UserDepartment", b =>
+                {
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("UserDepartment");
+                });
+
             modelBuilder.Entity("UserManagement.Models.UserShift", b =>
                 {
                     b.Property<int>("Id")
@@ -293,17 +306,43 @@ namespace UserManagement.Migrations
                     b.Property<decimal>("TotalTime")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Userid")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Userid");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserShift");
+                });
+
+            modelBuilder.Entity("UserManagement.Models.UserShiftLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CheckInTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOutTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserShiftId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserShiftId");
+
+                    b.ToTable("UserShiftLog");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -380,16 +419,45 @@ namespace UserManagement.Migrations
                 {
                     b.HasOne("UserManagement.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("Userid")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("UserManagement.Models.UserShiftLog", b =>
+                {
+                    b.HasOne("UserManagement.Models.User", "User")
+                        .WithMany("ShiftLog")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UserManagement.Models.UserShift", "UserShift")
+                        .WithMany("ShiftLog")
+                        .HasForeignKey("UserShiftId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserShift");
+                });
+
             modelBuilder.Entity("UserManagement.Models.Department", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("UserManagement.Models.User", b =>
+                {
+                    b.Navigation("ShiftLog");
+                });
+
+            modelBuilder.Entity("UserManagement.Models.UserShift", b =>
+                {
+                    b.Navigation("ShiftLog");
                 });
 #pragma warning restore 612, 618
         }

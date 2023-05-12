@@ -37,12 +37,13 @@ namespace UserManagement.Controllers
         }
         public IActionResult GetShiftyId(int id)
         {
+            ViewBag.UserList = _appDbContext.User.ToList();
             //get user by id
             UserShift userShift = _appDbContext.UserShift.Find(id); 
             return View(userShift);
         }
         public IActionResult UpdateShiftById(UserShift userShift)
-        {
+        {           
             _appDbContext.UserShift.Update(userShift);
             _appDbContext.SaveChanges();
             return RedirectToAction("GetShift");

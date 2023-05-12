@@ -1,0 +1,55 @@
+﻿@model List<UserManagement.Models.UserShiftLog>
+<style>
+    .button{
+        background-color:darkorange;
+        color:black;
+        border-color: black;
+        margin-bottom:20px;
+        margin-top:20px;
+        font-size:20px;
+    }
+    thead{
+        background-color:aqua;
+    }
+    table{
+        text-align:center;
+        border-color:blueviolet;
+    }
+</style>
+<h1>Attandance tracker</h1>
+<button onclick="CheckIn()" class="button">@ViewBag.CheckInCheck</button>
+<input id="attandanceId" value=@ViewBag.AttendanceId hidden="hidden" />
+<table class="table">
+    <thead>
+        <tr>
+            <td>Employe Name</td>
+            <td>Check in</td>
+            <td>Check Out</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if(ViewBag.UserShiftLog != null)
+        {
+            @foreach (var item in ViewBag.UserShiftLog)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.CheckInTime</td>
+                    <td>@item.CheckOutTime</td>
+                </tr>
+            }
+
+        }
+
+       
+    </tbody>
+</table>
+<script>
+    function CheckIn() {
+        var attandenceId = document.getElementById("attandanceId").value;
+        window.location.href = "@Url.Action("CheckInUser","Attandance")" + "?attandanceId=" + attandenceId;
+    }
+</script>
+
+
+
