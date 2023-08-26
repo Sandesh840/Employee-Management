@@ -32,7 +32,7 @@ namespace UserManagement.Controllers
         public IActionResult GetShift(UserShift shift)
         {
             List<UserShift> userShifts=_appDbContext.UserShift.ToList();
-            ViewBag.NameList = _appDbContext.User.ToList();
+            //ViewBag.NameList = _appDbContext.User.ToList();
             return View(userShifts);
         }
         public IActionResult GetShiftyId(int id)

@@ -17,7 +17,6 @@ namespace UserManagement.Controllers
         public ShiftStatusController(ApplicationDbContext applicationDbContext,
             UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-
             _applicationDbContext = applicationDbContext;
             _userManager = userManager;
             _signInManager = signInManager;

@@ -77,7 +77,8 @@ namespace UserManagement.Controllers
         public async Task<IActionResult> LogInUsers(LoginViewModel logInViewModel)
         {
            
-            var identityResult = await _signInManager.PasswordSignInAsync(logInViewModel.Email, logInViewModel.Password, false, false);
+            var identityResult = await _signInManager.PasswordSignInAsync(logInViewModel.Email,
+                logInViewModel.Password, false, false);
             if (identityResult.Succeeded)
             {
                
@@ -94,7 +95,6 @@ namespace UserManagement.Controllers
         // [Authorize(Roles ="admin")]
         public IActionResult AddRole()
         {
-
             return View();
         }
 

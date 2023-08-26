@@ -51,11 +51,14 @@ namespace UserManagement.Controllers
             {
                 if (userRole.FirstOrDefault() == "Staff")
                 {
-                    user = await _applicationDbContext.User.Where(x => x.IdentityUserId == logedInUser.Id).Include(x => x.Department).ToListAsync();
+                    user = await _applicationDbContext.User
+                        .Where(x => x.IdentityUserId == logedInUser.Id)
+                        .Include(x => x.Department).ToListAsync();
                 }
                 else if(userRole.FirstOrDefault() == "Admin")
                 {
-                    user = await _applicationDbContext.User.Include(x => x.Department).ToListAsync();
+                    user = await _applicationDbContext.User
+                        .Include(x => x.Department).ToListAsync();
                    
                 }
             }
